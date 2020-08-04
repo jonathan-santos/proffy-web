@@ -1,10 +1,12 @@
 import React from 'react'
 
+import Landing from './pages/landing'
+
+import './assets/styles/global.css'
+
 const App = () => {
   return (
-    <div className='App'>
-      <h1>Hello world</h1>
-    </div>
+    <Landing />
   )
 }
 
