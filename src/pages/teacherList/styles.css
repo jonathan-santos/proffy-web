@@ -16,6 +16,10 @@
   width: 90%;
 }
 
+#search-teachers > * {
+  margin-top: 1.4rem;
+}
+
 @media (min-width: 700px) {
   #page-teacher-list {
     max-width: 100%;

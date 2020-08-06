@@ -48,6 +48,11 @@
   transition: 0.2s;
 }
 
+#page-teacher-form main fieldset .input-block + .textarea-block,
+#page-teacher-form main fieldset .input-block + .select-block {
+  margin-top: 1.4rem;
+}
+
 #page-teacher-form main footer {
   padding: 4rem 2.4rem;
   background: var(--color-box-footer);

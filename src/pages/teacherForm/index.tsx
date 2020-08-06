@@ -2,6 +2,8 @@ import React from 'react'
 
 import PageHeader from '../../components/pageHeader'
 import Input from '../../components/input'
+import TextArea from '../../components/textarea'
+import Select from '../../components/select'
 
 import warningIcon from '../../assets/images/icons/warning.svg'
 
@@ -33,14 +35,25 @@ const TeacherForm = () => {
             name='whatsapp'
             label='Whatsapp'
           />
+
+          <TextArea
+            name='bio'
+            label='Biografia'
+          />
         </fieldset>
 
         <fieldset>
           <legend>Sobre a aula</legend>
 
-          <Input
+          <Select
             name='subject'
             label='Matéria'
+            options={[
+              { value: 'Artes', label: 'Artes' },
+              { value: 'Ciência', label: 'Ciência' },
+              { value: 'Programação', label: 'Programação' },
+              { value: 'Matemática', label: 'Matemática' }
+            ]}
           />
 
           <Input 
@@ -78,7 +91,7 @@ const TeacherForm = () => {
 
         <footer>
           <p>
-            <img src={warningIcon} alt="Aviso importante" />
+            <img src={warningIcon} alt='Aviso importante' />
             Importante! <br />
             Preencha todos os dados
           </p>
