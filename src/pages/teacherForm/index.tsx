@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import PageHeader from '../../components/pageHeader'
 import Input from '../../components/input'
@@ -9,7 +9,24 @@ import warningIcon from '../../assets/images/icons/warning.svg'
 
 import './styles.css'
 
+interface ScheduleItem {
+  week_day: number
+  from: string
+  to: string
+}
+
 const TeacherForm = () => {
+  const [ scheduleItems, setScheduleItems ] = useState([
+    { week_day: 0, from: '', to: '' }
+  ])
+
+  const createScheduleItem = () => {
+    setScheduleItems([
+      ...scheduleItems,
+      { week_day: 0, from: '', to: ''}
+    ])
+  }
+
   return (
     <div id='page-teacher-form' className='container'>
       <PageHeader
@@ -65,27 +82,38 @@ const TeacherForm = () => {
         <fieldset>
           <legend>
             <span>Horários disponíveis</span>
-            <button>+ Novo</button>
+            <button type='button' onClick={createScheduleItem}>+ Novo Horário</button>
           </legend>
 
-          <div>
-            <Input
-              name='week_day'
-              label='Dia da semana'
-            />
+          {scheduleItems.map((scheduleItem: ScheduleItem, count: number) => (
+            <div key={count} className='schedule-item'>
+              <Select
+                name='week_day'
+                label='Dia da semana'
+                options={[
+                  { value: '1', label: 'Segunda-feira' },
+                  { value: '2', label: 'Terça-feira' },
+                  { value: '3', label: 'Quarta-feira' },
+                  { value: '4', label: 'Quinta-feira' },
+                  { value: '5', label: 'Sexta-feira' },
+                  { value: '6', label: 'Sábado' },
+                  { value: '0', label: 'Domingo' }
+                ]}
+              />
 
-            <Input
-              type='time'
-              name='from'
-              label='Das'
-            />
+              <Input
+                type='time'
+                name='from'
+                label='Das'
+              />
 
-            <Input
-              type='time'
-              name='to'
-              label='Até'
-            />
-          </div>
+              <Input
+                type='time'
+                name='to'
+                label='Até'
+              />
+            </div>
+          ))}
 
         </fieldset>
 
